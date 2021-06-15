@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ItemCount from '../ItemCount';
 
 const divStyle = {
-    minHeight: "100vh",
+    minHeight: "90vh",
     width: "100%",
-    backgroundColor: "#323232",
+    backgroundColor: "#585858",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
 }
@@ -23,6 +25,7 @@ class ItemListContainer extends Component {
         return (
             <div style={divStyle}>
                 <h1 style={h1Style}>Catalogo de productos</h1>
+                <ItemCount/>
             </div>
         )
     }
