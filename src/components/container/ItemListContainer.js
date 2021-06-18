@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItemCount from '../ItemCount';
+import ItemList from '../ItemList';
 
 const divStyle = {
     minHeight: "90vh",
@@ -26,6 +27,7 @@ class ItemListContainer extends Component {
             <div style={divStyle}>
                 <h1 style={h1Style}>Catalogo de productos</h1>
                 <ItemCount/>
+                <ItemList/>
             </div>
         )
     }
