@@ -4,7 +4,7 @@ const btnStyle = {
 
 }
 
-const BtnAddCart = (props) => {
+function BtnAddCart (props) {
     return (
         <button style={btnStyle} onClick={props.clicked}>{props.nombre}</button>
     )

@@ -4,7 +4,7 @@ const btnStyle = {
     backgroundColor: "#61dafb"
 }
 
-const Btn = (props) => {
+function Btn (props) {
     return (
         <button style={btnStyle} onClick={props.clicked}>{props.nombre}</button>
     )
