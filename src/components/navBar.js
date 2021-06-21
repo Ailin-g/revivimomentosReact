@@ -29,13 +29,13 @@ const NavBar = () => {
     return (
         <nav style={navStyle}>
             <div style={divStyle}>
-                <CartWidget/>
                 <h1 style={{marginLeft: "8px", color: "#fff"}}>Revivi Momentos</h1>
             </div>
             <ul style={ulStyle}>
                 <li style={liStyle}><a style={aStyle} href={"#"}>Inicio</a></li>
                 <li style={liStyle}><a style={aStyle} href={"#"}>Productos</a></li>
                 <li style={liStyle}><a style={aStyle} href={"#"}>Contacto</a></li>
+                <CartWidget/>
             </ul>
         </nav>
     );

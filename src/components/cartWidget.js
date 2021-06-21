@@ -1,15 +1,15 @@
 import React from 'react';
-import url from '../img/logo192.png';
 
-const imgStyle = {
-    height: "48px",
-    width: "auto",
-    marginLeft: "8px"
+const cartStyle = {
+    fontSize: "120%",
+    color: "#fff"
 }
 
-const CartWidget = () => {
+ const style = `fas fa -shopping-cart ${cartStyle}`;
+
+ const CartWidget = () => {
     return (
-        <img src={url} style={imgStyle} alt={"logo"}></img>
+        <i className="fas fa-shopping-cart" style={cartStyle}></i>
     )
 }
 
