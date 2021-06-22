@@ -49,7 +49,7 @@ const imgProducto = {
  }
 
 const Item = (props)  => {
-    const url = `..${props.urlImg}`
+    const url = `.${props.urlImg}`
     return(
         <div style={tarjeta}>
             <div style={tarjSuperior}>
@@ -57,7 +57,7 @@ const Item = (props)  => {
                 <p style={articulo}>{props.idArt}</p>
             </div>
             <div style={tarjInferior}>
-                <img style={imgProducto} src={url} alt="Producto"></img>
+                <img style={imgProducto} src={props.urlImg} alt="Producto"></img>
                 <p style={precioProducto} >{props.precio}</p>
             </div>
         </div>
