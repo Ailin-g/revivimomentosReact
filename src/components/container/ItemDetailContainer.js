@@ -20,9 +20,9 @@ function ItemDetailContainer() {
         const prom = new Promise((resolve, reject) => {
             setTimeout(() => {
                resolve([
-                {nombre: "Tazas", id: "1", imgUrl: "/img/taza.png", precio: 450, descripcion: "Taza de casd kkfndsfksn jfslkfkj sslkfjsd jsflj lljflsjf lsj sl jsdlfj lkjsl j lsdjfl jfl sjf lsj slj  ss"},
-                {nombre: "Vasos", id: "2", imgUrl: "/img/taza.png", precio: 500,  descripcion: "Taza de casd kkfndsfksn jfslkfkj sslkfjsd jsflj lljflsjf lsj sl jsdlfj lkjsl j lsdjfl jfl sjf lsj slj  ss"},
-                {nombre: "Chopp", id: "3", imgUrl: "/img/taza.png", precio: 550,  descripcion: "Taza de casd kkfndsfksn jfslkfkj sslkfjsd jsflj lljflsjf lsj sl jsdlfj lkjsl j lsdjfl jfl sjf lsj slj  ss"}
+                {nombre: "Tazas", id: "1", imgUrl: "/img/taza.jpg", precio: 450, descripcion: "Taza de ceramica con el diseño que vos quieras "},
+                {nombre: "Vasos", id: "2", imgUrl: "/img/vaso.jpg", precio: 500,  descripcion: "Vaso de Polimero  con el diseño que vos quieras"},
+                {nombre: "Chopp", id: "3", imgUrl: "/img/chopp.jpg", precio: 550,  descripcion: "Chopp esmerilado o de vidrio con el diseño que vos quieras"}
                ]) 
             }, 2000);
         })

@@ -1,5 +1,6 @@
 import React from 'react';
 import CartWidget from './cartWidget';
+import { NavLink } from 'react-router-dom'
 
 const ulStyle = {
     listStyle: "none"
@@ -32,9 +33,9 @@ const NavBar = () => {
                 <h1 style={{marginLeft: "8px", color: "#fff"}}>Revivi Momentos</h1>
             </div>
             <ul style={ulStyle}>
-                <li style={liStyle}><a style={aStyle} href={"#"}>Inicio</a></li>
-                <li style={liStyle}><a style={aStyle} href={"#"}>Productos</a></li>
-                <li style={liStyle}><a style={aStyle} href={"#"}>Contacto</a></li>
+                <li style={liStyle}><NavLink to= "/" style={aStyle}>Inicio</NavLink></li>
+                <li style={liStyle}><NavLink to= "/catalogo" style={aStyle}>Productos</NavLink></li>
+                <li style={liStyle}><NavLink to= "/contacto" style={aStyle}>Contacto</NavLink></li>
                 <CartWidget/>
             </ul>
         </nav>

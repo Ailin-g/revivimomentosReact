@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import Item from './Item';
 
 
@@ -32,7 +33,7 @@ const Itemlist = ()  => {
 
     return(
         <div style= {divStyle}>
-            {producto.map(el => <Item  nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} ></Item>)}       
+            {producto.map(el => <Link to="/detalle"><Item  nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} ></Item></Link> )}       
         </div>
     )
 }   

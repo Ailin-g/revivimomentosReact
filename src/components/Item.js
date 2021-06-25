@@ -2,13 +2,13 @@ import React from 'react';
 
 const tarjeta = {
     width: "250px",
-    height: "150px",
+    height: "180px",
     backgroundColor: "#fff",
-    borderRadius: "15px"
+    borderRadius: "10px"
 }
 const tarjSuperior = {
     width: "100%",
-    heigth: "15%",
+    heigth: "25%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -23,33 +23,36 @@ const titulo = {
 const articulo = {
     alignSelf: "flex-end",
     justifyContent: "flex-end",
-    fontSize: "50%",
+    fontSize: "70%",
     color: "#272f3d",
     margin: "0",
 }
 const tarjInferior = {
     width: "100%",
-    height: "80%",
+    height: "75%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "start",
     alignItems: "center"
 }
 const imgProducto = {
     height: "100%",
-    width: "60%",
+    width: "auto",
     margin: "0",
+    borderRadius: "0 0 0 10px"
 
 }
  const precioProducto = {
      fontSize: "110%",
      color: "blue",
-    margin: "0",
-    fontWeight:"bold"
+     margin: "0",
+     fontWeight: "bold",
+     marginLeft: "8px",
+     alignSelf: "flex-start "
  }
 
 const Item = (props)  => {
-    const url = `.${props.urlImg}`
+   
     return(
         <div style={tarjeta}>
             <div style={tarjSuperior}>
