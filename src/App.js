@@ -14,8 +14,8 @@ function App() {
         <NavBar/>
       </header>
         <Switch>
-          <Route path="/"  component={ItemListContainer}/>
           <Route path="/detalle" component={ItemDetailContainer}/>
+          <Route path="/"  component={ItemListContainer}/>
         </Switch>
       </BrowserRouter>
     </div>

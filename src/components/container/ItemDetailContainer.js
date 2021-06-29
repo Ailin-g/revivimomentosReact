@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemDetail from '../ItemDetail';
 
+
 const detailContainer = {
     width: "100%",
     background: "#272f3d",
@@ -12,9 +13,9 @@ const detailContainer = {
 
 }
 
-function ItemDetailContainer() {
-
-    const [producto, setProducto] = useState([])
+function ItemDetailContainer()  {
+   
+    const [producto, setProducto] = useState([]);
     
     useEffect(() => {
         const prom = new Promise((resolve, reject) => {
@@ -32,13 +33,11 @@ function ItemDetailContainer() {
     }, []);
 
 
-
-        return (
-            <div style={detailContainer}>
-                {producto.map(el => <ItemDetail nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} descripcion={el.descripcion}></ItemDetail>)}
-            </div>
-        )
-
+    return (
+        <div style={detailContainer}>
+            {producto.map(el => <ItemDetail nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} descripcion={el.descripcion}></ItemDetail>)}
+        </div>
+    )
 }
-
+    
 export default ItemDetailContainer;

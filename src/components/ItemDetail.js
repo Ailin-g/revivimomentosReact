@@ -1,15 +1,15 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import ItemCount from './ItemCount';
 
 const tarjeta = {
     width: "250px",
-    height : "450px",
+    height : "500px",
     backgroundColor: "#fff",
     borderRadius: "15px"
 }
 const tarjSuperior = {
     width: "100%",
-    height: "10%",
+    height: "45px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -22,11 +22,12 @@ const titulo = {
 }
 const tarjInferior = {
     width: "100%",
-    height: "75%",
+    height: "380px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",
-    alignItems: "center"
+    alignItems: "center",
+    borderBottom: "1px solid #000"
 }
 const imgProducto = {
     height: "auto",
@@ -46,22 +47,50 @@ const infoProducto = {
     display:"flex",
     flexDirection: "column",
 }
+const descripcionProducto = {
+    margin: "5 0"
+}
 
-const ItemDetail = (props) => {
-    return(
-        <div style={tarjeta}>
+class ItemDetail extends Component {
+
+    state = {
+        stock: 15,
+        initial:1
+    }
+
+    sumarProducto = () => {
+        if(this.state.initial < this.state.stock){
+            this.setState({initial:this.state.initial +1})
+        }
+    }
+    restarProducto = () => {
+        if(this.state.initial > 0 ) {
+            this.setState({initial: this.state.initial -1})
+        }
+    }
+    informarCantidad = () => {
+            alert(`se agregarán al carrito ${this.state.initial} unidades`);
+    }
+
+    render() {
+
+        return(
+            <div style={tarjeta}>
             <div style={tarjSuperior}>
-                <p style={titulo}>{props.nombreArt}</p>
+                <p style={titulo}>{this.props.nombreArt}</p>
             </div>
             <div style={tarjInferior}>
-                <img style={imgProducto} src={`${props.urlImg}`} alt="Producto"></img>
+                <img style={imgProducto} src={`${this.props.urlImg}`} alt="Producto"></img>
                 <div style={infoProducto}>
-                    <p style={precioProducto}>{props.precio}</p>
-                    <p>{props.descripcion}</p>
+                    <p style={precioProducto}>{this.props.precio}</p>
+                    <p style={descripcionProducto}>{this.props.descripcion}</p>
                 </div>
             </div>
+            <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad}/>
         </div>
     )
+}
+
 }
 
 export default ItemDetail;
