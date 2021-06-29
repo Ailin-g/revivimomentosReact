@@ -5,7 +5,7 @@ const btnStyle ={
     display:"none",
     backgroundColor: "#61dafb"
 }
-const habilitado ={
+const habilitado = {
     display:"inline-block",
     backgroundColor: "#61dafb"
 }
