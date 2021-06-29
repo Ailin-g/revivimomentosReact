@@ -30,7 +30,7 @@ const ItemCount = (props) => {
                 </div>
                 <div>
                 <BtnAddCart nombre="Agregar al carrito" clicked={props.informarCantidad}/>
-                <BtnFinCompra clicked={props.iraCarrito} nombre="Finalizar Compra" />
+                <BtnFinCompra habilitado={props.habilitado} nombre="Finalizar Compra" />
                 </div>
             </div>
         )

@@ -5,10 +5,15 @@ const btnStyle ={
     display:"none",
     backgroundColor: "#61dafb"
 }
+const habilitado ={
+    display:"inline-block",
+    backgroundColor: "#61dafb"
+}
+
 
 function BtnFinCompra(props) {
     return(
-        <button style={btnStyle} onClick={props.clicked}><Link to="/cart">{props.nombre}</Link></button>
+        <button style={props.habilitado ? habilitado : btnStyle} onClick={props.clicked}><Link to="/cart">{props.nombre}</Link></button>
     )
 }
 

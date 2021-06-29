@@ -55,7 +55,8 @@ class ItemDetail extends Component {
 
     state = {
         stock: 15,
-        initial:1
+        initial:1,
+        habilitado: false
     }
 
     sumarProducto = () => {
@@ -70,6 +71,12 @@ class ItemDetail extends Component {
     }
     informarCantidad = () => {
             alert(`se agregarán al carrito ${this.state.initial} unidades`);
+            this.habilitarBoton();
+    }
+    habilitarBoton = () => {
+        if(this.state.habilitado === false){
+            this.setState({habilitado: true})
+        }
     }
 
     render() {
@@ -86,7 +93,7 @@ class ItemDetail extends Component {
                     <p style={descripcionProducto}>{this.props.descripcion}</p>
                 </div>
             </div>
-            <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad}/>
+            <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad} habilitado={this.state.habilitado}/>
         </div>
     )
 }
