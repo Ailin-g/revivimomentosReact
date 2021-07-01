@@ -33,7 +33,7 @@ const Itemlist = ()  => {
 
     return(
         <div style= {divStyle}>
-            {producto.map(el => <Link to="/detalle"><Item  nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} ></Item></Link> )}       
+            {producto.map(el => <Link to={`/detalle/:${el.id}`}><Item  nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} ></Item></Link> )}       
         </div>
     )
 }   

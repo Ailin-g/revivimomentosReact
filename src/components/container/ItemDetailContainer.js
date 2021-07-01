@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail';
 
 
@@ -14,6 +15,8 @@ const detailContainer = {
 }
 
 function ItemDetailContainer()  {
+
+    const { id } = useParams();
    
     const [producto, setProducto] = useState([]);
     
@@ -32,10 +35,17 @@ function ItemDetailContainer()  {
         })
     }, []);
 
+        useEffect(() => {
+            const idFiltrado = producto.filter(el => el.id === id);
+            console.log(idFiltrado)
+            setProducto(idFiltrado)
+        },[])
+
 
     return (
         <div style={detailContainer}>
-            {producto.map(el => <ItemDetail nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} descripcion={el.descripcion}></ItemDetail>)}
+            <ItemDetail nombreArt={producto.nombre} idArt={producto.id} urlImg={producto.imgUrl} precio={producto.precio} descripcion={producto.descripcion}></ItemDetail>
+            {/* {producto.map(el => <ItemDetail nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} descripcion={el.descripcion}></ItemDetail>)} */}
         </div>
     )
 }
