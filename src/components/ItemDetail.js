@@ -51,30 +51,36 @@ const descripcionProducto = {
     margin: "5 0"
 }
 
-class ItemDetail extends Component {
+const ThemeContext = React.createContext();
 
-    state = {
-        stock: 15,
-        initial:1,
-        habilitado: false
+class ItemDetail extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            stock: 15,
+            initial: 1,
+            habilitado: false,
+            nombreProd: this.props.nombreArt,
+            precioProd: this.props.precio,
+        }
     }
 
     sumarProducto = () => {
-        if(this.state.initial < this.state.stock){
-            this.setState({initial:this.state.initial +1})
-        }
+        if(this.state.initial < this.state.stock) {
+            this.setState({ initial: this.state.initial + 1})
+        } 
     }
     restarProducto = () => {
-        if(this.state.initial > 0 ) {
-            this.setState({initial: this.state.initial -1})
+        if(this.state.initial > 0) {
+            this.setState({initial: this.state.initial - 1})
         }
     }
     informarCantidad = () => {
-            alert(`se agregarán al carrito ${this.state.initial} unidades`);
-            this.habilitarBoton();
+        alert(`Se agregarán al carrito ${this.state.initial} unidades`);
+        this.habilitarBoton();
     }
     habilitarBoton = () => {
-        if(this.state.habilitado === false){
+        if(this.state.habilitado === false) {
             this.setState({habilitado: true})
         }
     }
@@ -82,22 +88,23 @@ class ItemDetail extends Component {
     render() {
 
         return(
-            <div style={tarjeta}>
-            <div style={tarjSuperior}>
-                <p style={titulo}>{this.props.nombreArt}</p>
-            </div>
-            <div style={tarjInferior}>
-                <img style={imgProducto} src={`${this.props.urlImg}`} alt="Producto"></img>
-                <div style={infoProducto}>
-                    <p style={precioProducto}>{this.props.precio}</p>
-                    <p style={descripcionProducto}>{this.props.descripcion}</p>
+            <ThemeContext.Provider value={this.state}>
+                <div style={tarjeta}>
+                    <div style={tarjSuperior}>
+                        <p style={titulo}>{this.props.nombreArt}</p>
+                    </div>
+                    <div style={tarjInferior}>
+                        <img style={imgProducto} src={`${this.props.urlImg}`} alt="Producto"></img>
+                        <div style={infoProducto}>
+                            <p style={precioProducto}>{this.props.precio}</p>
+                            <p style={descripcionProducto}>{this.props.descripcion}</p>
+                        </div>
+                    </div>
+                    <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad} habilitado={this.state.habilitado}/>
                 </div>
-            </div>
-            <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad} habilitado={this.state.habilitado}/>
-        </div>
-    )
-}
-
+            </ThemeContext.Provider>
+        )
+    }
 }
 
 export default ItemDetail;
