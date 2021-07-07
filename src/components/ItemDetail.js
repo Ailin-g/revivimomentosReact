@@ -88,7 +88,7 @@ class ItemDetail extends Component {
     render() {
 
         return(
-            <ThemeContext.Provider value={this.state}>
+            <ThemeContext.Provider value={{state: this.state}}>
                 <div style={tarjeta}>
                     <div style={tarjSuperior}>
                         <p style={titulo}>{this.props.nombreArt}</p>

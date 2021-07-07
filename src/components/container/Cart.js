@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Btn from '../Btn';
 
 const seccionCarrito = {
     width: "100%",
@@ -49,6 +50,8 @@ const ThemeContext = React.createContext();
 
 const Cart = () =>  {
 
+    const [cartVacio, setCartVacio] = useState(false);
+
     let articulos = [];
 
     const datosProducto = useContext(ThemeContext);
@@ -64,20 +67,36 @@ const Cart = () =>  {
         )
     }
     })
+    useEffect(() => {
+        if( {}  === datosProducto ) {
+            setCartVacio(true)
+        }
+    }, [datosProducto])
 
 
-        return(
-            <div style={seccionCarrito}>
-                <div style={cartStyle}>
-                    <div style={cabecera}>
-                        <div style={cabeceraNombre}>Producto</div>
-                        <div style={cabeceraDetalle}>Cantidad</div>
-                        <div style={cabeceraDetalle}>Precio</div>
-                    </div>
-                    {articulos}
-                </div>
-                {console.log(datosProducto)}
+    let infoCarrito =  (
+        <div style={cartStyle}>
+            <div style={cabecera}>
+                <div style={cabeceraNombre}>Producto</div>
+                <div style={cabeceraDetalle}>Cantidad</div>
+                <div style ={cabeceraDetalle}>Precio</div>
             </div>
+            {articulos}
+        </div>
+    );
+    const carritoVacio =(
+        <div style={cartStyle}>
+            <p>carritoVacio!</p>
+            <Btn nombre="ir a productos!"></Btn>
+        </div>
+    )          
+
+
+return(
+    <div style={seccionCarrito}>
+        {cartVacio ? infoCarrito : carritoVacio }
+        {console.log(datosProducto)}                
+    </div>
         )
 
 }
