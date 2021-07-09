@@ -12,20 +12,20 @@ const contenedorStyle = {
     top: "50"
 }
 
-const ThemeContext = React.createContext();
+// const ThemeContext = React.createContext();
 
  const style = `fas fa -shopping-cart ${cartStyle}`;
 
  const CartWidget = () => {
 
-    const datosCarrito = useContext(ThemeContext);
+    // const datosCarrito = useContext(ThemeContext);
     let vacio = true;
-
-   datosCarrito.initial ? vacio = false : vacio = true;
+    /*style={vacio ? { display: "none"} : { display: "inline-block"}}*/
+//    datosCarrito.initial ? vacio = false : vacio = true;
 
     return (
-        <Link style={vacio ? { display: "none"} : { display: "inline-block"}} to="/cart">
-            <p style ={contenedorStyle}>{datosCarrito.initial}</p>
+        <Link to="/cart">
+            {/* <p style ={contenedorStyle}>{datosCarrito.initial}</p> */}
         <i className="fas fa-shopping-cart" style={cartStyle}></i>
         </Link>
     )

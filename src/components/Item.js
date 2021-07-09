@@ -20,13 +20,6 @@ const titulo = {
     margin: "0",
     }
 
-const articulo = {
-    alignSelf: "flex-end",
-    justifyContent: "flex-end",
-    fontSize: "70%",
-    color: "#272f3d",
-    margin: "0",
-}
 const tarjInferior = {
     width: "100%",
     height: "75%",
@@ -57,10 +50,9 @@ const Item = (props)  => {
         <div style={tarjeta}>
             <div style={tarjSuperior}>
                 <p style={titulo}>{props.nombreArt}</p>
-                <p style={articulo}>{props.idArt}</p>
             </div>
             <div style={tarjInferior}>
-                <img style={imgProducto} src={props.urlImg} alt="Producto"></img>
+                <img style={imgProducto} src={`/img/${props.urlImg}`} alt="Producto"></img>
                 <p style={precioProducto} >{props.precio}</p>
             </div>
         </div>

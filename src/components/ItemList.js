@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Item from './Item';
+import { getFirestore } from '../clientFactory';
 
 
 const divStyle = {
@@ -14,26 +15,30 @@ const divStyle = {
 
 
 const Itemlist = ()  => {
-    const [producto, setProducto] = useState([])
-    
-    useEffect(() => {
-        const prom = new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                resolve([
-                    {nombre: "Taza", id:  "1", imgUrl: "/img/taza.jpg", precio: 450 },
-                    {nombre: "Vaso", id:  "2", imgUrl: "/img/vaso.jpg", precio: 500 },
-                    {nombre: "Chopp", id: "3", imgUrl: "/img/chopp.jpg", precio: 550 },
-                ])
-            }, 2000);
-        })
-        prom.then((res) =>{
-            setProducto(res);
-        })
-    },[])
+    const [productoDb, setProductoDb] = useState([]);
 
+    useEffect(() => {
+        const db = getFirestore();
+        const itemCollection = db.collection("productos");
+        console.log("la coleccion es ");
+
+        itemCollection.get().then((querySnapshot) => {
+            if(querySnapshot.size === 0) {
+                console.log("Sin resultado");
+            }
+            console.log(querySnapshot.docs.data)
+            console.log(querySnapshot);
+            setProductoDb(querySnapshot.docs.map(doc => doc.data()));
+            console.log(productoDb);
+        }).catch((error) => {
+            console.log("error buscando archivos");
+        })
+        
+    }, [])
+    
     return(
         <div style= {divStyle}>
-            {producto.map(el => <Link to={`/detalle/:${el.id}`}><Item  nombreArt={el.nombre} idArt={el.id} urlImg={el.imgUrl} precio={el.precio} ></Item></Link> )}       
+            {productoDb.map(el => <Link to={`/detalle/${el.id}`}><Item nombreArt={el.nombre} urlImg={el.imageId} precio={el.precio} ></Item></Link> )}       
         </div>
     )
 }   
