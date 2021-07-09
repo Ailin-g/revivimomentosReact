@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Item from './Item';
 import { getFirestore } from '../clientFactory';
+import { queryByTestId } from '@testing-library/react';
 
 
 const divStyle = {
@@ -16,20 +17,18 @@ const divStyle = {
 
 const Itemlist = ()  => {
     const [productoDb, setProductoDb] = useState([]);
+    const [idProducto, setIdProducto] = useState();
 
     useEffect(() => {
         const db = getFirestore();
         const itemCollection = db.collection("productos");
-        console.log("la coleccion es ");
 
         itemCollection.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
                 console.log("Sin resultado");
             }
-            console.log(querySnapshot.docs.data)
-            console.log(querySnapshot);
             setProductoDb(querySnapshot.docs.map(doc => doc.data()));
-            console.log(productoDb);
+            setIdProducto(querySnapshot.docs.id);
         }).catch((error) => {
             console.log("error buscando archivos");
         })
@@ -38,7 +37,7 @@ const Itemlist = ()  => {
     
     return(
         <div style= {divStyle}>
-            {productoDb.map(el => <Link to={`/detalle/${el.id}`}><Item nombreArt={el.nombre} urlImg={el.imageId} precio={el.precio} ></Item></Link> )}       
+            {productoDb.map(el => <Link to={`/detalle/${idProducto}`}><Item nombreArt={el.nombre} urlImg={el.imageId} precio={el.precio} ></Item></Link> )}       
         </div>
     )
 }   

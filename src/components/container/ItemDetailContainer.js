@@ -33,18 +33,19 @@ function ItemDetailContainer()  {
             console.log(querySnapshot.docs.data)
             console.log(querySnapshot);
             setProducto(querySnapshot.docs.map(doc => doc.data()));
+            // setProducto(querySnapshot.docs.filter(el => el.id === id))
             console.log(producto);
         }).catch((error) => {
             console.log("error buscando archivos");
-        })
+        });
         
-    }, [])
+    }, [id])
     
-        useEffect(() => {
-            const idFiltrado = producto.filter(el => el.id === id);
-            console.log(idFiltrado)
-            setProducto(idFiltrado)
-        },[])
+        // useEffect(() => {
+        //     const idFiltrado = producto.filter(el => el.id === id);
+        //     console.log(idFiltrado)
+        //     setProducto(idFiltrado)
+        // },[])
 
 
     return (
