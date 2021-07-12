@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Item from './Item';
 import { getFirestore } from '../clientFactory';
-import { queryByTestId } from '@testing-library/react';
 
 
 const divStyle = {
@@ -17,7 +16,6 @@ const divStyle = {
 
 const Itemlist = ()  => {
     const [productoDb, setProductoDb] = useState([]);
-    const [idProducto, setIdProducto] = useState();
 
     useEffect(() => {
         const db = getFirestore();
@@ -27,8 +25,7 @@ const Itemlist = ()  => {
             if(querySnapshot.size === 0) {
                 console.log("Sin resultado");
             }
-            setProductoDb(querySnapshot.docs.map(doc => doc.data()));
-            setIdProducto(querySnapshot.docs.id);
+            setProductoDb(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
         }).catch((error) => {
             console.log("error buscando archivos");
         })
@@ -37,7 +34,7 @@ const Itemlist = ()  => {
     
     return(
         <div style= {divStyle}>
-            {productoDb.map(el => <Link to={`/detalle/${idProducto}`}><Item nombreArt={el.nombre} urlImg={el.imageId} precio={el.precio} ></Item></Link> )}       
+            {productoDb.map(el => <Link to={`/detalle/${el.id}`}><Item nombreArt={el.nombre} urlImg={el.imageId} precio={el.precio} ></Item></Link> )}       
         </div>
     )
 }   

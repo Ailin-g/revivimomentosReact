@@ -94,7 +94,7 @@ class ItemDetail extends Component {
                         <p style={titulo}>{this.props.nombreArt}</p>
                     </div>
                     <div style={tarjInferior}>
-                        <img style={imgProducto} src={`${this.props.urlImg}`} alt="Producto"></img>
+                        <img style={imgProducto} src={`/img/${this.props.urlImg}`} alt="Producto"></img>
                         <div style={infoProducto}>
                             <p style={precioProducto}>{this.props.precio}</p>
                             <p style={descripcionProducto}>{this.props.descripcion}</p>

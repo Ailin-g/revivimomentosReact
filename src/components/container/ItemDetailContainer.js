@@ -14,43 +14,28 @@ const detailContainer = {
     justifyContent: "space-evenly"
 
 }
-
+const getItems=(id) =>{
+    const db = getFirestore();
+    const itemCollection = db.collection('productos');
+    const oneItem = itemCollection.doc(id) 
+    return oneItem.get();
+   }
 function ItemDetailContainer()  {
-
     const { id } = useParams();
-   
     const [producto, setProducto] = useState([]);
-
-    useEffect(() => {
-        const db = getFirestore();
-        const itemCollection = db.collection("productos");
-        console.log("la coleccion es ");
-
-        itemCollection.get().then((querySnapshot) => {
-            if(querySnapshot.size === 0) {
-                console.log("Sin resultado");
-            }
-            console.log(querySnapshot.docs.data)
-            console.log(querySnapshot);
-            setProducto(querySnapshot.docs.map(doc => doc.data()));
-            // setProducto(querySnapshot.docs.filter(el => el.id === id))
-            console.log(producto);
-        }).catch((error) => {
-            console.log("error buscando archivos");
-        });
-        
-    }, [id])
-    
-        // useEffect(() => {
-        //     const idFiltrado = producto.filter(el => el.id === id);
-        //     console.log(idFiltrado)
-        //     setProducto(idFiltrado)
-        // },[])
-
-
+        useEffect(() => {
+            getItems(id)
+              .then((doc) => {
+                if(doc.exists){
+                    setProducto({id: doc.id, ...doc.data()})
+                }
+              })
+              return;
+          }, [id]);
+    console.log('producto', producto)
     return (
         <div style={detailContainer}>
-            <ItemDetail nombreArt={producto.nombre} urlImg={producto.imgUrl} precio={producto.precio} descripcion={producto.descripcion}></ItemDetail>
+            <ItemDetail nombreArt={producto.nombre} urlImg={producto.imageId} precio={producto.precio} descripcion={producto.descripción}></ItemDetail>
         </div>
     )
 }
