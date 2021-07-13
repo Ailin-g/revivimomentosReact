@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItemCount from './ItemCount';
+import { ProviderCartContext } from '../context/context'
 
 const tarjeta = {
     width: "250px",
@@ -51,12 +52,11 @@ const descripcionProducto = {
     margin: "5 0"
 }
 
-const ThemeContext = React.createContext();
-
 class ItemDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // stock: this.props.cantidad,
             stock: 15,
             initial: 1,
             habilitado: false,
@@ -88,7 +88,7 @@ class ItemDetail extends Component {
     render() {
 
         return(
-            <ThemeContext.Provider value={{state: this.state}}>
+            <ProviderCartContext value={{state: this.state}}>
                 <div style={tarjeta}>
                     <div style={tarjSuperior}>
                         <p style={titulo}>{this.props.nombreArt}</p>
@@ -102,7 +102,7 @@ class ItemDetail extends Component {
                     </div>
                     <ItemCount stock={this.state.stock} initial={this.state.initial} sumarProducto={this.sumarProducto} restarProducto={this.restarProducto} informarCantidad={this.informarCantidad} habilitado={this.state.habilitado}/>
                 </div>
-            </ThemeContext.Provider>
+            </ProviderCartContext>
         )
     }
 }

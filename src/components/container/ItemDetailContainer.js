@@ -32,10 +32,9 @@ function ItemDetailContainer()  {
               })
               return;
           }, [id]);
-    console.log('producto', producto)
     return (
         <div style={detailContainer}>
-            <ItemDetail nombreArt={producto.nombre} urlImg={producto.imageId} precio={producto.precio} descripcion={producto.descripción}></ItemDetail>
+            <ItemDetail nombreArt={producto.nombre} urlImg={producto.imageId} precio={producto.precio} descripcion={producto.descripción} cantidad={producto.cantidad}></ItemDetail>
         </div>
     )
 }

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Btn from '../Btn';
+import { ConsumerCartContext } from '../../context/context';
+import cartContext from '../../context/context';
 
 const seccionCarrito = {
     width: "100%",
@@ -46,7 +48,6 @@ const cabeceraDetalle = {
     width: "30%"
 }
 
-const ThemeContext = React.createContext();
 
 const Cart = () =>  {
 
@@ -54,16 +55,16 @@ const Cart = () =>  {
 
     let articulos = [];
 
-    const datosProducto = useContext(ThemeContext);
+    const datosProducto = useContext(cartContext);
 
     useEffect(() => {
         if(datosProducto !== undefined) {
             articulos.push(
                 <div style={articuloStyle}>
-                <p style={nomProdStyle}>{datosProducto.nombreProd}</p>
-                <p style={cantProdStyle}>{datosProducto.precioProd}</p>
-                <p style={precioProdStyle}>{datosProducto.initial}</p>
-            </div>
+                    <p style={nomProdStyle}>{datosProducto.nombreProd}</p>
+                    <p style={cantProdStyle}>{datosProducto.precioProd}</p>
+                    <p style={precioProdStyle}>{datosProducto.initial}</p>
+                </div>
         )
     }
     })
@@ -86,11 +87,11 @@ const Cart = () =>  {
     );
     const carritoVacio =(
         <div style={cartStyle}>
+            {datosProducto}
             <p>carritoVacio!</p>
             <Btn nombre="ir a productos!"></Btn>
         </div>
     )          
-
 
 return(
     <div style={seccionCarrito}>
