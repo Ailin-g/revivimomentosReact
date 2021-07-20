@@ -56,8 +56,8 @@ class ItemDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // stock: this.props.cantidad,
-            stock: 15,
+            stock: this.props.cantidad,
+            // stock: 15,
             initial: 1,
             habilitado: false,
             nombreProd: this.props.nombreArt,

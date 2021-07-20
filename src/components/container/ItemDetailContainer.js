@@ -38,5 +38,5 @@ function ItemDetailContainer()  {
         </div>
     )
 }
-    
+
 export default ItemDetailContainer;

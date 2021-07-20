@@ -156,7 +156,7 @@ const Cart = () =>  {
             <p>carritoVacio!</p>
             <Btn nombre="ir a productos!"></Btn>
         </div>
-    )          
+    )
 
 return(
     <div style={seccionCarrito}>
